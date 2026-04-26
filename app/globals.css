@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 244, 247, 251;
+  --foreground: 26, 36, 64;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-sans, system-ui), -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Inputs share the same focus style across the app */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: #29aae1;
+  box-shadow: 0 0 0 3px rgba(41, 170, 225, 0.15);
+}
+
+/* Tailwind doesn't ship a thin scrollbar utility — we use a bit of CSS */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 28, 66, 0.15);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 28, 66, 0.3);
+}
