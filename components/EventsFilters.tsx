@@ -14,7 +14,7 @@ interface Props {
 const TYPE_STYLES: Record<string, string> = {
   navigation: "bg-rose-50 text-rose-700",
   input: "bg-amber-50 text-amber-700",
-  paste: "bg-blue-50 text-blue-700"
+  paste: "bg-blue-50 text-blue-700",
 };
 
 export default function EventsFilters({ events }: Props) {
@@ -115,10 +115,7 @@ export default function EventsFilters({ events }: Props) {
             disabled={isPending}
             className="inline-flex items-center gap-2 px-4 py-2 border border-slate-200 text-sm font-medium text-slate-700 rounded-lg hover:border-brand-cyan hover:text-brand-cyan transition-colors disabled:opacity-50"
           >
-            <RotateCw
-              size={14}
-              className={clsx(isPending && "animate-spin")}
-            />
+            <RotateCw size={14} className={clsx(isPending && "animate-spin")} />
             Refresh
           </button>
         </div>
@@ -144,6 +141,9 @@ export default function EventsFilters({ events }: Props) {
                     Type
                   </th>
                   <th className="text-left px-4 py-3 text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
+                    Domain
+                  </th>
+                  <th className="text-left px-4 py-3 text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
                     Target
                   </th>
                 </tr>
@@ -167,11 +167,17 @@ export default function EventsFilters({ events }: Props) {
                           className={clsx(
                             "inline-block px-2 py-0.5 rounded-full text-[11px] uppercase tracking-wide font-semibold",
                             TYPE_STYLES[ev.type] ||
-                              "bg-slate-100 text-slate-600"
+                              "bg-slate-100 text-slate-600",
                           )}
                         >
                           {ev.type}
                         </span>
+                      </td>
+                      <td
+                        className="px-4 py-3 text-brand-navy font-medium"
+                        title={ev.domain || "—"}
+                      >
+                        {ev.domain || "—"}
                       </td>
                       <td
                         className="px-4 py-3 font-mono text-[12px] text-slate-700 max-w-[420px] truncate"
